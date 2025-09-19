@@ -41,6 +41,7 @@ public class EmployeeController {
      * @return
      */
     @PostMapping("/login")
+    @ApiOperation("员工登录")
     public Result<EmployeeLoginVO> login(@RequestBody EmployeeLoginDTO employeeLoginDTO) {
         log.info("员工登录：{}", employeeLoginDTO);
 
@@ -70,74 +71,75 @@ public class EmployeeController {
      * @return
      */
     @PostMapping("/logout")
+    @ApiOperation("员工退出")
     public Result<String> logout() {
         return Result.success();
     }
 
-    /**
-     * 新增员工
-     * @param employeeDTO
-     * @return
-     */
-    @PostMapping
-    @ApiOperation("新增员工")
-    public Result save(@RequestBody EmployeeDTO employeeDTO) {
-        log.info("新增员工：{}",employeeDTO);
-        employeeService.save(employeeDTO);
-        return Result.success();
-    }
+//    /**
+//     * 新增员工
+//     * @param employeeDTO
+//     * @return
+//     */
+//    @PostMapping
+//    @ApiOperation("新增员工")
+//    public Result save(@RequestBody EmployeeDTO employeeDTO) {
+//        log.info("新增员工：{}",employeeDTO);
+//        employeeService.save(employeeDTO);
+//        return Result.success();
+//    }
 
-    /**
-     * 员工分页查询
-     * @param employeePageQueryDTO
-     * @return
-     */
-    @GetMapping("/page")
-    @ApiOperation("员工分页查询")
-    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO) {
-        log.info("员工分页查询，参数为：{}", employeePageQueryDTO);
-        PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
-        return Result.success(pageResult);
-    }
+//    /**
+//     * 员工分页查询
+//     * @param employeePageQueryDTO
+//     * @return
+//     */
+//    @GetMapping("/page")
+//    @ApiOperation("员工分页查询")
+//    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO) {
+//        log.info("员工分页查询，参数为：{}", employeePageQueryDTO);
+//        PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
+//        return Result.success(pageResult);
+//    }
 
-    /**
-     * 启用禁用员工账户
-     * @param status
-     * @param id
-     * @return
-     */
-    @PostMapping("/status/{status}")
-    @ApiOperation("启用禁用员工账户")
-    public Result startOrStop(@PathVariable Integer status, Long id) {
-        log.info("启用禁用员工账户：{}，{}", status, id);
-        employeeService.startOrStop(status, id);
-        return Result.success();
-    }
+//    /**
+//     * 启用禁用员工账户
+//     * @param status
+//     * @param id
+//     * @return
+//     */
+//    @PostMapping("/status/{status}")
+//    @ApiOperation("启用禁用员工账户")
+//    public Result startOrStop(@PathVariable Integer status, Long id) {
+//        log.info("启用禁用员工账户：{}，{}", status, id);
+//        employeeService.startOrStop(status, id);
+//        return Result.success();
+//    }
 
-    /**
-     * 根据iD查询用户信息
-     * @param id
-     * @return
-     */
-    @GetMapping("/{id}")
-    @ApiOperation("根据iD查询用户信息")
-    public Result<Employee> getById(@PathVariable Long id) {
-        log.info("根据iD查询用户信息：{}", id);
-        Employee employee = employeeService.getById(id);
-        return Result.success(employee);
-    }
+//    /**
+//     * 根据iD查询用户信息
+//     * @param id
+//     * @return
+//     */
+//    @GetMapping("/{id}")
+//    @ApiOperation("根据iD查询用户信息")
+//    public Result<Employee> getById(@PathVariable Long id) {
+//        log.info("根据iD查询用户信息：{}", id);
+//        Employee employee = employeeService.getById(id);
+//        return Result.success(employee);
+//    }
 
-    /**
-     * 编辑员工信息
-     * @param employeeDTO
-     * @return
-     */
-    @PutMapping
-    @ApiOperation("编辑员工信息")
-    public Result update(@RequestBody EmployeeDTO employeeDTO) {
-        log.info("编辑员工信息：{}", employeeDTO);
-        employeeService.update(employeeDTO);
-        return Result.success();
-    }
+//    /**
+//     * 编辑员工信息
+//     * @param employeeDTO
+//     * @return
+//     */
+//    @PutMapping
+//    @ApiOperation("编辑员工信息")
+//    public Result update(@RequestBody EmployeeDTO employeeDTO) {
+//        log.info("编辑员工信息：{}", employeeDTO);
+//        employeeService.update(employeeDTO);
+//        return Result.success();
+//    }
 
 }
